@@ -32,11 +32,11 @@ def apresenta_registro(registro: Registro):
     }
     
 class RegistroBuscaSchema(BaseModel):
-    """ Define como deve ser a estrutura que representa a busca. Que será
-        feita apenas com base no nome do modelo.
+    """ Define como deve ser a estrutura que representa a busca por um registro. 
+        Deverão ser fornecidos o título da avaliação e a data do registro
     """
+    titulo: str = "Passeio com a família em Buenos Aires"
     data_registro: str = "15/09/2023"
-
 
 
 class ListagemRegistrosSchema(BaseModel):

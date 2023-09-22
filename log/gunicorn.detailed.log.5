@@ -1,74 +1,38 @@
-[2023-09-22 01:50:45,579] ERROR log_exception() L1449 Exception on /registros [GET] - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask/app.py L1449
-Traceback (most recent call last):
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
-    self.dialect.do_execute(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: registro
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask/app.py", line 1519, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask/app.py", line 1517, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask/app.py", line 1503, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask_openapi3/scaffold.py", line 109, in wrapper
-    resp = _do_wrapper(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/flask_openapi3/do_wrapper.py", line 135, in _do_wrapper
-    response = func(**request_kwargs)
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/app.py", line 78, in get_produtos
-    registros = session.query(Registro).all()
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2772, in all
-    return self._iter().all()
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2907, in _iter
-    result = self.session.execute(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1712, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 333, in _execute_on_connection
-    return connection._execute_clauseelement(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1572, in _execute_clauseelement
-    ret = self._execute_context(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1943, in _execute_context
-    self._handle_dbapi_exception(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2124, in _handle_dbapi_exception
-    util.raise_(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
-    raise exception
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
-    self.dialect.do_execute(
-  File "/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: registro
-[SQL: SELECT registro.pk_registro AS registro_pk_registro, registro.titulo AS registro_titulo, registro.descricao AS registro_descricao, registro.imagem AS registro_imagem, registro.data_registro AS registro_data_registro, registro.data_insercao AS registro_data_insercao 
-FROM registro]
-(Background on this error at: https://sqlalche.me/e/14/e3q8)
-[2023-09-22 01:50:45,646] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:50:45] "[35m[1mGET /registros HTTP/1.1[0m" 500 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:50:55,872] INFO _log() L187  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://192.168.0.155:5000 - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:50:55,874] INFO _log() L187  [33mPress CTRL+C to quit[0m - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:50:55,875] INFO _log() L187   * Restarting with stat - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:50:58,908] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:50:58] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:51:25,942] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:51:25] "POST /registro HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:51:33,225] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:51:33] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:51:39,075] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:51:39] "OPTIONS /registro?data_registrox=22/08/2023 HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:51:39,081] WARNING del_produto() L139  Erro ao deletar produto #'15/09/2023', Produto não encontrado na base :/ - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/app.py L139 
-[2023-09-22 01:51:39,082] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:51:39] "[33mDELETE /registro?data_registrox=22/08/2023 HTTP/1.1[0m" 404 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:52:37,098] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:52:37] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:52:40,082] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:52:40] "OPTIONS /registro?data_registrox=22/08/2023 HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:52:40,088] WARNING del_produto() L139  Erro ao deletar produto #'15/09/2023', Produto não encontrado na base :/ - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/app.py L139 
-[2023-09-22 01:52:40,090] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:52:40] "[33mDELETE /registro?data_registrox=22/08/2023 HTTP/1.1[0m" 404 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:53:33,720] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:53:33] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:53:35,836] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:53:35] "OPTIONS /registro?data_registro=22/08/2023 HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:53:35,856] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:53:35] "DELETE /registro?data_registro=22/08/2023 HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
-[2023-09-22 01:53:48,560] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 01:53:48] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:01:16,601] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:01:16] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:01:23,488] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:01:23] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:05:52,372] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:05:52] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:10:14,007] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:10:14] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:11:05,623] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:11:05] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:11:45,265] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:11:45] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:11:58,880] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:11:58] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:12:26,077] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:12:26] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:13:26,407] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:13:26] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:15:17,765] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:15:17] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:15:55,303] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:15:55] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:16:19,095] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:16:19] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:16:38,870] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:16:38] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:17:05,488] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:17:05] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:18:04,298] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:18:04] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:18:33,143] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:18:33] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:19:07,043] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:19:07] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:19:12,729] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:19:12] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:21:49,979] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:21:49] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:23:16,075] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:23:16] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:23:25,732] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:23:25] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:23:31,173] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:23:31] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:26:38,022] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:26:38] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:26:44,677] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:26:44] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:27:06,058] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:27:06] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:27:19,262] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:27:19] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:27:45,229] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:27:45] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:28:21,461] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:28:21] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:28:27,556] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:28:27] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:28:32,318] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:28:32] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:28:44,094] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:28:44] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:28:54,037] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:28:54] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:29:14,363] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:29:14] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:29:21,870] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:29:21] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:29:29,660] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:29:29] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:29:32,910] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:29:32] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:29:40,837] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:29:40] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 13:40:46,046] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 13:40:46] "POST /registro HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 

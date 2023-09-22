@@ -12,7 +12,7 @@ class Registro(Base):
     
     id = Column("pk_registro", Integer, primary_key=True) 
     titulo = Column(String(70))
-    descricao = Column(String(500))
+    descricao = Column(String(1500))
     imagem = Column(String(50))
     data_registro = Column(String(10))
     data_insercao = Column(DateTime, default=datetime.now())

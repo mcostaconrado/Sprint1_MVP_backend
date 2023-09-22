@@ -16,7 +16,7 @@ CORS(app)
 
 # definindo tags
 home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
-produto_tag = Tag(name="Veículo", description="Adição, visualização e remoção de produtos à base")
+registro_tag = Tag(name="Registro", description="Adição, visualização e remoção de produtos à base")
 
 
 @app.get('/', tags=[home_tag])
@@ -26,7 +26,7 @@ def home():
     return redirect('/openapi')
 
 
-@app.post('/registro', tags=[produto_tag],
+@app.post('/registro', tags=[registro_tag],
           responses={"200": RegistroViewSchema})#, "409": ErrorSchema, "400": ErrorSchema})
 def add_registro(form: RegistroSchema):
     """Adiciona um novo Produto à base de dados
@@ -39,7 +39,8 @@ def add_registro(form: RegistroSchema):
         imagem=form.imagem,
         data_registro=form.data_registro
         )
-    logger.debug(f"Adicionando registro do dia: '{registro.data_registro}'")
+    
+    logger.debug(f"Adicionando registro '{registro.titulo}' do dia '{registro.data_registro}'")
     try:
         # criando conexão com a base
         session = Session()
@@ -63,8 +64,7 @@ def add_registro(form: RegistroSchema):
         logger.warning(f"Erro ao adicionar produto '{registro.data_registro}', {error_msg}")
         return {"mesage": error_msg}, 400
 
-
-@app.get('/registros', tags=[produto_tag],
+@app.get('/registros', tags=[registro_tag],
          responses={"200": ListagemRegistrosSchema, "404": ErrorSchema})
 def get_produtos():
     """Faz a busca por todos os Produto cadastrados
@@ -85,48 +85,53 @@ def get_produtos():
         # retorna a representação de produto
         
         return apresenta_registros(registros), 200
-'''
-@app.get('/registro', tags=[produto_tag],
+
+@app.get('/registro', tags=[registro_tag],
          responses={"200": RegistroViewSchema, "404": ErrorSchema})
 def get_registro(query: RegistroBuscaSchema):
    
     """Faz a busca por um Registro a partir do id do produto
     Retorna uma representação dos produtos e comentários associados.
     """
+
+    titulo = query.titulo 
+    data_registro = query.data_registro
     
-    registro_id = query.id
-    
-    logger.debug(f"Coletando dados sobre produto #{registro_id}")
+    logger.debug(f"Coletando dados sobre {titulo} do dia {data_registro}")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
-    registro = session.query(Registro).filter(Registro.id == registro_id).first()
+    registro = session.query(Registro).filter(Registro.titulo == titulo and Registro.data_registro == data_registro).first()
 
     if not registro:
         # se o produto não foi encontrado
         error_msg = "Registro não encontrado na base :/"
-        logger.warning(f"Erro ao buscar produto '{registro_id}', {error_msg}")
+        logger.warning(f"Erro ao encontrar registro '{titulo}', {error_msg}")
         return {"mesage": error_msg}, 404
     else:
-        logger.debug(f"Produto econtrado: '{registro.nome}'")
+        logger.debug(f"Registro encontrado!")
         # retorna a representação de produto
         return apresenta_registro(registro), 200
 
-'''
-@app.delete('/registro', tags=[produto_tag],
+@app.delete('/registro', tags=[registro_tag],
             responses={"200": RegistroDelSchema, "404": ErrorSchema})
 def del_produto(query: RegistroBuscaSchema):
-    """Deleta um Produto a partir do nome de produto informado
+    """Deleta um Registro a partir do título e data informados
 
     Retorna uma mensagem de confirmação da remoção.
     """
+    print(query)
+    titulo_registro = query.titulo
     data_registro = unquote(unquote(query.data_registro))
+    
+    print(titulo_registro)
+    print(data_registro)
     
     logger.debug(f"Deletando dados sobre produto #{data_registro}")
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
-    count = session.query(Registro).filter(Registro.data_registro == data_registro).delete()
+    count = session.query(Registro).filter(Registro.data_registro == data_registro and Registro.titulo == titulo_registro).delete()
     session.commit()
 
     if count:
