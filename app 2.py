@@ -61,15 +61,15 @@ def add_registro(form: RegistroSchema):
     '''
     except IntegrityError as e:
         # como a duplicidade do nome é a provável razão do IntegrityError
-        error_msg = "Registro de mesmo nome já salvo na base :/"
-        logger.warning(f"Erro ao adicionar registro '{registro.data_registro}', {error_msg}")
+        error_msg = "Produto de mesmo nome já salvo na base :/"
+        logger.warning(f"Erro ao adicionar produto '{registro.data_registro}', {error_msg}")
         return {"mesage": error_msg}, 409
     '''
 
 
 @app.get('/registros', tags=[registro_tag],
          responses={"200": ListagemRegistrosSchema, "404": ErrorSchema})
-def registros():
+def get_produtos():
     """Faz a busca por todos os Registros cadastrados na base de dados
 
     Retorna uma representação da listagem dos registros e todas as suas informações.
@@ -93,8 +93,8 @@ def registros():
          responses={"200": RegistroViewSchema, "404": ErrorSchema})
 def get_registro(query: RegistroBuscaSchema):
    
-    """Faz a busca por um Registro a partir do Título e Data.
-    Retorna uma representação dos registros e detalhes.
+    """Faz a busca por um Registro a partir do id do produto
+    Retorna uma representação dos produtos e comentários associados.
     """
 
     titulo = query.titulo 
@@ -107,18 +107,18 @@ def get_registro(query: RegistroBuscaSchema):
     registro = session.query(Registro).filter(Registro.titulo == titulo and Registro.data_registro == data_registro).first()
 
     if not registro:
-        # se o registro não foi encontrado
+        # se o produto não foi encontrado
         error_msg = "Registro não encontrado na base :/"
-        logger.warning(f"Erro ao encontrar registro {titulo} do dia {data_registro}, {error_msg}")
+        logger.warning(f"Erro ao encontrar registro '{titulo}', {error_msg}")
         return {"mesage": error_msg}, 404
     else:
         logger.debug(f"Registro encontrado!")
-        # retorna a representação de registro
+        # retorna a representação de produto
         return apresenta_registro(registro), 200
 
 @app.delete('/registro', tags=[registro_tag],
             responses={"200": RegistroDelSchema, "404": ErrorSchema})
-def del_registro(query: RegistroBuscaSchema):
+def del_produto(query: RegistroBuscaSchema):
     """Deleta um Registro a partir do título e data informados
 
     Retorna uma mensagem de confirmação da remoção.
@@ -130,7 +130,7 @@ def del_registro(query: RegistroBuscaSchema):
     print(titulo_registro)
     print(data_registro)
     
-    logger.debug(f"Deletando dados sobre registro #{data_registro}")
+    logger.debug(f"Deletando dados sobre produto #{data_registro}")
     # criando conexão com a base
     session = Session()
     # fazendo a remoção
@@ -139,10 +139,10 @@ def del_registro(query: RegistroBuscaSchema):
 
     if count:
         # retorna a representação da mensagem de confirmação
-        logger.debug(f"Deletado registro {titulo_registro} do dia {data_registro}")
-        return {"mesage": "Registro removido"}, 200
+        logger.debug(f"Deletado produto #{data_registro}")
+        return {"mesage": "Produto removido", "id": data_registro}
     else:
-        # se o registro não foi encontrado
-        error_msg = "Registro não encontrado na base."
-        logger.warning(f"Erro ao deletar registro '{titulo_registro}' do dia '{data_registro}', {error_msg}")
+        # se o produto não foi encontrado
+        error_msg = "Produto não encontrado na base :/"
+        logger.warning(f"Erro ao deletar produto #'{data_registro}', {error_msg}")
         return {"mesage": error_msg}, 404
