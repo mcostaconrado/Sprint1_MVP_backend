@@ -1,13 +1,18 @@
 # Sprint1_MVP_frontend
-Specialization Course - Sprint 1 - SoftwareFrontend component
+Pós Graduação em Engenharia de Software - PUC-Rio - MVP Sprint 1
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Básico** 
+Este pequeno projeto é a implementação de um diário de viagens simples. É meu primeiro projeto de backend e, nele, utilizei Python e Flask para construir as rotas de API e a comunicação com o banco de dados SQLite.
 
-O objetivo aqui é ilutsrar o conteúdo apresentado ao longo das três aulas da disciplina.
+O objetivo do projeto é por em prática o que foi ensinado na Sprint 1 do curso, além de começar um portfólio de apresentação profissional.
 
 ---
 ## Como executar 
 
+Primeiramente, é necessário realizar o clone deste repositório:
+
+```
+$ git clone https://github.com/mcostaconrado/Sprint1_MVP_frontend.git
+```
 
 Será necessário ter todas as libs python listadas no `requirements.txt` instaladas.
 Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
