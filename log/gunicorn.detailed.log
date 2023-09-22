@@ -28,3 +28,11 @@
 [2023-09-22 16:10:31,734] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 16:10:31] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
 [2023-09-22 16:11:32,411] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 16:11:32] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
 [2023-09-22 16:11:50,638] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 16:11:50] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 18:51:12,742] INFO _log() L187  [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.155:5000 - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 18:51:12,743] INFO _log() L187  [33mPress CTRL+C to quit[0m - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 18:51:12,744] INFO _log() L187   * Restarting with stat - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 18:51:26,291] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 18:51:26] "GET /registros HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 
+[2023-09-22 18:51:38,752] INFO _log() L187  127.0.0.1 - - [22/Sep/2023 18:51:38] "POST /registro HTTP/1.1" 200 - - call_trace=/Users/conradocosta/Desktop/Pos/Sprint 1/0.MVP/Sprint1_MVP_backend/env_app/lib/python3.9/site-packages/werkzeug/_internal.py L187 

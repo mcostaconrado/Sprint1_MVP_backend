@@ -16,7 +16,7 @@ CORS(app)
 
 # definindo tags
 home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
-registro_tag = Tag(name="Registro", description="Adição, visualização e remoção de produtos à base")
+registro_tag = Tag(name="Registro", description="Adição, visualização e remoção de registros de viagem à base")
 
 
 @app.get('/', tags=[home_tag])
@@ -27,11 +27,11 @@ def home():
 
 
 @app.post('/registro', tags=[registro_tag],
-          responses={"200": RegistroViewSchema})#, "409": ErrorSchema, "400": ErrorSchema})
+          responses={"200": RegistroViewSchema, "409": ErrorSchema, "400": ErrorSchema})
 def add_registro(form: RegistroSchema):
-    """Adiciona um novo Produto à base de dados
+    """Adiciona um novo Registro de viagem à base de dados
 
-    Retorna uma representação dos produtos e comentários associados.
+    Retorna uma representação dos registros, com detalhes sobre a experiência.
     """
     registro = Registro(
         titulo=form.titulo,
@@ -41,48 +41,51 @@ def add_registro(form: RegistroSchema):
         )
     
     logger.debug(f"Adicionando registro '{registro.titulo}' do dia '{registro.data_registro}'")
+    
     try:
         # criando conexão com a base
         session = Session()
-        # adicionando produto
+        # adicionando registro de viagem
         session.add(registro)
         # efetivando o camando de adição de novo item na tabela
         session.commit()
-        logger.debug(f"Adicionado registro do dia '{registro.data_registro}'")
+        logger.debug(f"Adicionado registro '{registro.titulo}' do dia '{registro.data_registro}'")
         return apresenta_registro(registro), 200
     
+    except Exception as e:
+        # caso um erro fora do previsto
+        error_msg = "Não foi possível salvar novo item :/"
+        logger.warning(e)
+        logger.warning(f"Erro ao adicionar registro '{registro.titulo}' do dia '{registro.data_registro}, {error_msg}")
+        return {"mesage": error_msg}, 400
+    '''
     except IntegrityError as e:
         # como a duplicidade do nome é a provável razão do IntegrityError
         error_msg = "Produto de mesmo nome já salvo na base :/"
         logger.warning(f"Erro ao adicionar produto '{registro.data_registro}', {error_msg}")
         return {"mesage": error_msg}, 409
+    '''
 
-    except Exception as e:
-        # caso um erro fora do previsto
-        error_msg = "Não foi possível salvar novo item :/"
-        logger.warning(e)
-        logger.warning(f"Erro ao adicionar produto '{registro.data_registro}', {error_msg}")
-        return {"mesage": error_msg}, 400
 
 @app.get('/registros', tags=[registro_tag],
          responses={"200": ListagemRegistrosSchema, "404": ErrorSchema})
 def get_produtos():
-    """Faz a busca por todos os Produto cadastrados
+    """Faz a busca por todos os Registros cadastrados na base de dados
 
-    Retorna uma representação da listagem de produtos.
+    Retorna uma representação da listagem dos registros e todas as suas informações.
     """
-    logger.debug(f"Coletando produtos ")
+    logger.debug(f"Capturando registros da base de dados...")
     # criando conexão com a base
     session = Session()
     # fazendo a busca
     registros = session.query(Registro).all()
     print(len(registros))    
     if not registros:
-        # se não há produtos cadastrados
+        # se não há registros cadastrados
         return {"registros": []}, 200
     else:
         logger.debug(f"%d registros econtrados" % len(registros))
-        # retorna a representação de produto
+        # retorna a representação de registro
         
         return apresenta_registros(registros), 200
 
