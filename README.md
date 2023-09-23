@@ -44,5 +44,5 @@ Para encerrar o servidor, basta digitar Ctrl + C no terminal de execução, e el
 
 Para sair do ambiente virtual, digite o comando a seguir:
 ```
-(env_app)$ pip install -r requirements.txt
+(env_app)$ deactivate
 ```
