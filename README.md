@@ -1,7 +1,7 @@
 # Sprint1_MVP_backend
 Pós Graduação em Engenharia de Software - PUC-Rio - MVP Sprint 1
 
-Este pequeno projeto é a implementação de um diário de viagens simples. É meu primeiro projeto de backend e, nele, utilizei Python e Flask para construir as rotas de API e a comunicação com o banco de dados SQLite.
+Este pequeno projeto é a implementação de um diário de viagens simples. É meu primeiro projeto de backend e, nele, utilizei Python e Flask para construir as rotas de API e a comunicação com o banco de dados SQLite. Foi utilizada, também, ORM (SQLAlchemy) para realizar a comunicação entre o banco de dados e a linguagem de programação. 
 
 O objetivo do projeto é por em prática o que foi aprendido na Sprint 1 do curso, além de começar um portfólio de apresentação profissional.
 
