@@ -14,7 +14,7 @@ Primeiramente, é necessário realizar o clone deste repositório:
 $ git clone https://github.com/mcostaconrado/Sprint1_MVP_backend.git
 ```
 
-O repositório conta com o arquivo `requirements.txt`. Neles, se encontram todas as libs Python que terão que ser instaladas para que o projeto possa ser executado.
+O repositório conta com o arquivo `requirements.txt`. Nele, se encontram todas as bibliotecas Python que terão que ser instaladas para que o projeto possa ser executado.
 É recomendado, embora não obrigatório, realizar essas instalações em um ambiente virtual do tipo [virtualenv], a fim de não se misturar versões com outros possíveis projetos na máquina. Essa etapa pode ser realizada com os comandos a seguir:
 
 ```
@@ -28,19 +28,21 @@ Após isso, já no ambiente virtual, é realizado o download de dependências do
 (env_app)$ pip install -r requirements.txt
 ```
 
-Este comando instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
-
-Para executar a API  basta executar:
+Finalmente, para executar a API, basta digitar o comando abaixo:
 
 ```
-(env)$ flask run --host 0.0.0.0 --port 5000
+(env_app)$ pip install -r requirements.txt
+$ flask run --host 0.0.0.0 --port 5000
 ```
 
-Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor
-automaticamente após uma mudança no código fonte. 
+Também é possível rodar o código acima adicionando, ao fim, o parâmetro `--reload`. Este parâmetro faz com que o servidor da aplicação seja reinicado automaticamente após qualquer mudança do código fonte. Pode ser útil em casos de desenvolvimento e debug.
 
-```
-(env)$ flask run --host 0.0.0.0 --port 5000 --reload
-```
+Para verificar o status da API em execução, basta abrir o link abaixo no navegador:
+[http://localhost:5000/#/](http://localhost:5000/#/)
 
-Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+Para encerrar o servidor, basta digitar Ctrl + C no terminal de execução, e ele será interrompido.
+
+Para sair do ambiente virtual, digite o comando a seguir:
+```
+(env_app)$ pip install -r requirements.txt
+```
