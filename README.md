@@ -1,7 +1,7 @@
 # Sprint1_MVP_backend
 Pós Graduação em Engenharia de Software - PUC-Rio - MVP Sprint 1
 
-Este pequeno projeto é a implementação de um diário de viagens simples. É meu primeiro projeto de backend e, nele, utilizei Python e Flask para construir as rotas de API e a comunicação com o banco de dados SQLite. Para realizar a comunicação entre o banco de dados e a linguagem de programação, foi utilizada a técnica ORM com SQLAlchemy. 
+Este pequeno projeto é a implementação do backend de um diário de viagens simples. É meu primeiro projeto de backend e, nele, utilizei Python e Flask para construir as rotas de API e a comunicação com o banco de dados SQLite. Para realizar a comunicação entre o banco de dados e a linguagem de programação, foi utilizada a técnica ORM com SQLAlchemy. 
 
 O objetivo do projeto é por em prática o que foi aprendido na Sprint 1 do curso, além de começar um portfólio de apresentação profissional.
 
@@ -15,7 +15,7 @@ $ git clone https://github.com/mcostaconrado/Sprint1_MVP_backend.git
 ```
 
 O repositório conta com o arquivo `requirements.txt`. Nele, se encontram todas as bibliotecas Python que terão que ser instaladas para que o projeto possa ser executado.
-É recomendado, embora não obrigatório, realizar essas instalações em um ambiente virtual do tipo [virtualenv], a fim de não se misturar versões com outros possíveis projetos na máquina. Essa etapa pode ser realizada com os comandos a seguir:
+É recomendado, embora não obrigatório, realizar essas instalações em um ambiente virtual do tipo [virtualenv], a fim de não se misturar versões com outros possíveis projetos na máquina. Utilizando a versão 3.9 do Python, essa etapa pode ser realizada com os comandos a seguir:
 
 ```
 $ python3.9 -m venv env_app
