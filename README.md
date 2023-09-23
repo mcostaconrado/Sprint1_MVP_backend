@@ -1,9 +1,9 @@
-# Sprint1_MVP_frontend
+# Sprint1_MVP_backend
 Pós Graduação em Engenharia de Software - PUC-Rio - MVP Sprint 1
 
 Este pequeno projeto é a implementação de um diário de viagens simples. É meu primeiro projeto de backend e, nele, utilizei Python e Flask para construir as rotas de API e a comunicação com o banco de dados SQLite.
 
-O objetivo do projeto é por em prática o que foi ensinado na Sprint 1 do curso, além de começar um portfólio de apresentação profissional.
+O objetivo do projeto é por em prática o que foi aprendido na Sprint 1 do curso, além de começar um portfólio de apresentação profissional.
 
 ---
 ## Como executar 
@@ -11,16 +11,21 @@ O objetivo do projeto é por em prática o que foi ensinado na Sprint 1 do curso
 Primeiramente, é necessário realizar o clone deste repositório:
 
 ```
-$ git clone https://github.com/mcostaconrado/Sprint1_MVP_frontend.git
+$ git clone https://github.com/mcostaconrado/Sprint1_MVP_backend.git
 ```
 
-Será necessário ter todas as libs python listadas no `requirements.txt` instaladas.
-Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
-
-> É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html).
+O repositório conta com o arquivo `requirements.txt`. Neles, se encontram todas as libs Python que terão que ser instaladas para que o projeto possa ser executado.
+É recomendado, embora não obrigatório, realizar essas instalações em um ambiente virtual do tipo [virtualenv], a fim de não se misturar versões com outros possíveis projetos na máquina. Essa etapa pode ser realizada com os comandos a seguir:
 
 ```
-(env)$ pip install -r requirements.txt
+$ python3.9 -m venv env_app
+$ source env_app/bin/activate
+```
+
+Após isso, já no ambiente virtual, é realizado o download de dependências do projeto com o comando a seguir:
+
+```
+(env_app)$ pip install -r requirements.txt
 ```
 
 Este comando instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
